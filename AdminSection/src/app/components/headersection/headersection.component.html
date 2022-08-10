@@ -1,0 +1,15 @@
+<header>
+    <div class="search-wrapper">
+        <span class="fa fa-search"></span>
+        <input type="search" placeholder="Search here">
+    </div>
+
+    <div class="user-wrapper">
+        <img src="{{this.imgurl}}/{{this.userData.Owner_Image}}" alt="" width="30px" height="30px">
+        <div>
+            <h4>{{this.userData.Shop_Name}}</h4>
+            <small>{{this.userData.Owner_Name}}</small>
+        </div>
+        <i class="fa fa-sign-out fa-lg" style="margin-left: 30px; cursor: pointer;" (click)="logout()"></i>
+    </div> 
+</header>

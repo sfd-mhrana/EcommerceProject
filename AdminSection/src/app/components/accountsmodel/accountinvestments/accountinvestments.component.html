@@ -1,0 +1,79 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Product</h4>
+        </div>
+        <div class="form">
+            <form [formGroup]="form">
+                <div class="input-group"> 
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="partnername"
+                                    onkeyup="surching.serrchFormDropDown('partnername','partnerlist')" type="text"
+                                    [formControl]="$any(form).controls['Parson_Name']"
+                                    autocomplete="off" value="{{partnername}}"
+                                    [readonly]="readonly"
+                                    >
+                                <label for="partnername">Person Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="partnerlist" class="dropdown-menu">
+                            <li *ngFor="let p of allPartnerName" (click)="setName(p)" id="male">
+                                <span>{{p}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" name=""
+                    [formControl]="$any(form).controls['Amount']"
+                    id="amount" placeholder=" " />
+                    <label for="amount">Enter Amount</label>
+                </div>
+                
+                <div class="btn-grp">
+                    <strong>Clear</strong>
+                    <strong  (click)="submitinvest()">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign">
+        <div class="form-hader search1">
+            <div class="surch-header">
+                <label for="name">Surch By Name From All Investing</label>
+                <input type="text"  onkeyup="surching.searchFormTable('name','surchtable',1,'investing')" name="" id="name"
+                    placeholder=" " />
+            </div>
+        </div>
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Investor</td>
+                        <td>Added Date</td>
+                        <td>Amount</td>
+                        <td>Action</td>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let p of allInvestingDetails">
+                        <td>{{p.id}}</td>
+                        <td>{{p.Parson_Name}}</td>
+                        <td>{{p.Date}}</td>
+                        <td>{{p.Amount}}</td>
+                        <td>
+                            <i (click)="deleteInvest(p)" class="fa fa-trash"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Investing: <b id="showtotalinvest">{{totalAmount}}</b></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<simple-notifications></simple-notifications>
+<div *ngIf="token;else other_content2">
+  <div *ngIf="isDesktopDevice;else other_content">
+    <app-sidenavbar></app-sidenavbar>
+    <div class="main-content">
+      <app-headersection></app-headersection>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+  <ng-template #other_content>
+    <h3 style="margin-top: 50px;">This Site You Cann't Visit without Dasktop Size Mood.</h3>
+  </ng-template>
+</div>
+<ng-template #other_content2>
+  <app-logincomponents></app-logincomponents>
+</ng-template>

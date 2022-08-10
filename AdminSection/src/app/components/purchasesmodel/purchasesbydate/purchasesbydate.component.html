@@ -1,0 +1,69 @@
+<div class="main-tableDesign">
+    <div class="form-hader search">
+        
+        <div class="surch-header">
+            <label for="from">From :</label>
+            <input type="date" name=""
+            #from (change)="fromProduct(from.value)"
+            id="from" placeholder=" " />
+        </div> 
+        <div class="surch-header">
+            <label for="to">To :</label>
+            <input type="date" name="" 
+            #to (change)="toProduct(to.value)"
+            id="to" placeholder=" " />
+        </div>
+
+    </div>
+
+    <div class="table-design" *ngIf="tableItem!=null && tableItem.length>0;else other_content">
+        <table id="surchtable" class="styled-table">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Company Name</td>
+                    <td>Inoive NO</td>
+                    <td>Date</td>
+                    <td>Category</td>
+                    <td>Product</td>
+                    <td>Quantaty</td>
+                    <td>Price</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let p of tableItem">
+                    <td>
+                        <img src="{{imgurl}}/{{p.product.Producut_Images}}" style="width: 50px; height: 50px; margin: 0;">
+                    </td>
+                    <td>{{p.Company_Name}}</td>
+                    <td>{{p.Invoice_No}}</td>
+                    <td>{{p.Purchase_Date}}</td>
+                    <td>{{p.category.Name}}</td>
+                    <td>{{p.product.Product_Name}}</td>
+                    <td>{{p.Quantaty}}</td>
+                    <td>{{p.Producut_Price}}</td>
+                    <td>{{p.Total_Price}}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <td>Total </td>
+                    <td></td>
+                    <td>Item        : <b  id="totalitem" value="">{{totalItem}}</b></td>
+                    <td></td>
+                    <td></td>
+                    <td>Quantaty</td>
+                    <td> <b  id="totalquentaty" value="">{{totalQuentaty}}</b></td>
+                    <td>Amount</td>
+                    <td><b  id="totalamount" value="">{{totalAmount}}</b></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <ng-template #other_content>
+        <h3 style="margin: 50px; margin-bottom: 100px;">No Record Found.</h3>
+    </ng-template>
+    
+</div>

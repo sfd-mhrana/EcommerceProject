@@ -1,0 +1,31 @@
+<simple-notifications></simple-notifications>
+<div class="cards">
+    <div class="card-items">
+        <div class="card-item">
+            <button routerLink="/purchases/new"  class="btn btn-info"><i class="fa fa-plus"></i><span>New Purchases</span> </button>
+        </div>
+        <div class="card-item"> 
+            <button routerLink="/purchases/pduepaid"   class="btn btn-info"><i class="fa fa-credit-card"></i><span> Purchases Due
+                    Paid</span> </button>
+        </div> 
+        <div class="card-item">
+            <button routerLink="/purchases/purchasesacc"   class="btn btn-info"><i class="fa fa-money"></i> <span>Purchases Account</span></button>
+        </div> 
+        <div class="card-item">
+            <button routerLink="/purchases/purchasesproduct"   class="btn btn-info"><i class="fa fa-product-hunt"></i> <span>Purchases
+                    Product</span></button>
+        </div>
+        <div class="card-item">
+            <button routerLink="/purchases/purchasesbysuppliyer"   class="btn btn-info"><i class="fa fa-users"></i> <span> Product By
+                Suppliyer</span></button>
+        </div>
+        <div class="card-item">
+            <button routerLink="/purchases/purchasesbybill"   class="btn btn-info"><i class="fa fa-list"></i> <span> Product By Bill
+                    No</span></button>
+        </div>
+        <div routerLink="/purchases/purchasesbydate"   class="card-item">
+            <button class="btn btn-info"><i class="fa fa-calendar"></i> <span>Surch By Date</span></button>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

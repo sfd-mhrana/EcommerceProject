@@ -1,0 +1,71 @@
+<ngx-spinner></ngx-spinner>
+<div *ngIf="this.allStock.length>0;else other_content">
+    <div class="deshbord2">
+        <div class="barclass" style="height: 600px;">
+            <div class="col-sm-4 text-center" style="width:100%;height:100%;">
+                <div style="height: 10%;">
+                    <h2 class="text-center">
+                    <input type="date" name="yearchooser" #yearchooser (change)="getAllStockList(yearchooser.value)"
+                        style="float: right; width: 200px; height:40px;">
+                    </h2>
+                </div>
+                
+                <div style="width: auto; height: 90%;">
+                    <ejs-chart style='display:block' align='center' id='chartcontainer' [title]='title' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'
+                    [tooltip]='tooltip'   [zoomSettings]='zoomSettings' >
+                        <e-series-collection>
+                            <e-series [dataSource]='chartData' type='Line' xName='x' yName='y' name='Amount' width=2 [marker]='marker'> </e-series>
+                        </e-series-collection>
+                    </ejs-chart>
+                </div>
+            </div>
+        </div>
+
+        <div class="topproduct">
+            <div class="form-hader">
+                <h2>Last Stock List</h2>
+            </div>
+            <div class="table-design">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <td>Image</td>
+                            <td>Category</td>
+                            <td>Product</td>
+                            <td>Purchases Quantaty</td>
+                            <td>Sales Quantaty</td>
+                            <td>Stock Quantaty</td>
+                            <td>Last Amount</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of laststocklist">
+                            <td>
+                                <img src="{{productimage}}/{{p.Producut_Images}}"
+                                    style="height: 50px; width: 50px;" alt="">
+                            </td>
+                            <td>{{p.CName}}</td>
+                            <td>{{p.Product_Name}}</td>
+                            <td>{{p.PQuantaty}}</td>
+                            <td>{{p.sQuantaty}}</td>
+                            <td>{{p.stockQuantaty}}</td>
+                            <td>{{p.StockPrice}}</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr >
+                            <td colspan="6">Total</td>
+                            <td>{{totalStockAmount}}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+ 
+    </div>
+</div>
+<ng-template #other_content>
+    <h3 style="margin-top: 50px;">No Data Found....</h3>
+</ng-template>
+   

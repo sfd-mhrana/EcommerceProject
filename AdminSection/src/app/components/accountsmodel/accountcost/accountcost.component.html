@@ -1,0 +1,67 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Product</h4>
+        </div>  
+        <div class="form">
+            <form [formGroup]="form">
+                <div class="input-group">
+                    <input type="text" name="" [formControl]="$any(form).controls['Details']" id="details" placeholder=" " />
+                    <label for="details">Enter Details</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name=""  [formControl]="$any(form).controls['Amount']" id="amount" placeholder=" " />
+                    <label for="amount">Enter Amount</label>
+                </div>
+                 
+                <div class="btn-grp">
+                    <strong>Clear</strong>
+                    <strong (click)="submitCosting()">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign">
+        <div class="form-hader search2">
+            <div class="surch-header">
+                <label for="from">From :</label>
+                <input type="date"
+                #from (change)="fromProduct(from.value)"
+                name="" id="from" placeholder=" " />
+            </div>
+            <div class="surch-header">
+                <label for="to">To :</label>
+                <input type="date"
+                #to (change)="toProduct(to.value)"
+                name="" id="to" placeholder=" " />
+            </div>
+        </div>
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Status</td>
+                        <td>Details</td>
+                        <td>Amount</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of alltableItem">
+                        <td>{{p.Date}}</td>
+                        <td>{{p.Status}}</td>
+                        <td>{{p.Details}}</td>
+                        <td>{{p.Amount}}</td>
+                        <td>
+                            <i (click)="deleteCosting(p)" class="fa fa-trash"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Product: <b>{{totalCost}}</b></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="main-tableDesign">
+    <div class="form-hader search">
+        <div class="surch-header">
+            <label for="name">Surch By Product Name :</label>
+            <input type="text" onkeyup="surching.searchFormTable('name','surchtable',5,'salesproduct')" name="" id="name"
+                placeholder=" " />
+        </div>
+    </div>    
+    <div class="table-design">
+        <table id="surchtable" class="styled-table">
+            <thead>
+                <tr>
+                    <td onclick="surching.sortTable('surchtable',0)">Company Name</td>
+                    <td onclick="surching.sortTable('surchtable',1)">Inoive NO</td>
+                    <td onclick="surching.sortTable('surchtable',2)">Employee</td>
+                    <td onclick="surching.sortTable('surchtable',3)">Date</td>
+                    <td onclick="surching.sortTable('surchtable',4)">Category</td>
+                    <td onclick="surching.sortTable('surchtable',5)">Product</td>
+                    <td onclick="surching.sortTable('surchtable',6)">GRN</td>
+                    <td onclick="surching.sortTable('surchtable',7)">Purchases Price</td>
+                    <td onclick="surching.sortTable('surchtable',8)">Sales Price</td>
+                    <td onclick="surching.sortTable('surchtable',9)">Sales Quantaty</td>
+                    <td onclick="surching.sortTable('surchtable',10)">Single Profit</td>
+                    <td onclick="surching.sortTable('surchtable',11)">Total Profit</td>
+                    <td onclick="surching.sortTable('surchtable',12)">Total Amount</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of allItem">
+                    <td>{{p.Company_Name}}</td>
+                    <td>{{p.Invoice_No}}</td>
+                    <td>{{p.employee.Employee_Name}}</td>
+                    <td>{{p.Sales_Date}}</td>
+                    <td>{{p.category.Name}}</td>
+                    <td>{{p.product.Product_Name}}</td>
+                    <td>{{p.GRN}}</td>
+                    <td>{{p.product_g_r_n.Producut_Price}}</td>
+                    <td>{{p.Sales_Price}}</td>
+                    <td>{{p.Quantaty}}</td>
+                    <td>{{ (p.Sales_Price)-(p.product_g_r_n.Producut_Price)}}</td>
+                    <td>{{( (p.Sales_Price)-(p.product_g_r_n.Producut_Price))*p.Quantaty}}</td>
+                    <td>{{p.Total_Price}}</td>
+                </tr>
+            </tbody> 
+            <thead>
+                <tr>
+                    <td colspan="6">All Total</td>
+                    <td colspan="2">Total Index  :<span id="total_index">{{totalindex}}</span></td>
+                    <td colspan="3"></td>
+                    <td id="total_profit">{{totalprofit}}</td>
+                    <td id="total_amount">{{totalsales}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

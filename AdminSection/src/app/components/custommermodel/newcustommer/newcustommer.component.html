@@ -1,0 +1,83 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Custommer</h4>
+        </div> 
+        <div class="form">
+            <form [formGroup]="form">
+                <div class="input-group">
+                    <input type="text"autocomplete="off"   [formControl]="$any(form).controls['Custommer_Name']" name="" id="custommername" placeholder=" " />
+                    <label for="custommername">Custommer Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text"autocomplete="off"   [formControl]="$any(form).controls['Company_Name']" name="" id="companyname" placeholder=" " />
+                    <label for="companyname">Company Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="number"autocomplete="off"  name="" [formControl]="$any(form).controls['Mobile']" id="mobile" placeholder=" " />
+                    <label for="mobile">Mobile No</label>
+                </div>
+                <div class="input-group">
+                    <input type="text"autocomplete="off"  name="" [formControl]="$any(form).controls['Address']" id="address" placeholder=" " />
+                    <label for="address">Address</label>
+                </div>
+                <div class="input-group">
+                    <input type="file"autocomplete="off"  name=""(change)="uploadImage($event)"
+                    [formControl]="$any(form).controls['Custommer_Image']"
+                    
+                    id="image" placeholder=" " />
+                    <label for="image">Choose Image</label>
+                </div>
+                <div class="imageselect">
+                    <img id="selectimage"  [src]="imageSrc || 'http://placehold.it/180'" alt="">
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign" *ngIf="allCustommer!=null && allCustommer.length>0;else other_content">
+        <div class="form-hader">
+            <h4>All of Your Custommer</h4>
+        </div>
+        <div class="table-design">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Company</td>
+                        <td>Custommer</td>
+                        <td>Mobile</td>
+                        <td>Address</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let p of allCustommer">
+                        <td>
+                            <img    src="{{imgurl}}/{{p.Custommer_Image}}" style="width: 50px; height: 50px; margin: 0;">
+                        </td>
+                        <td>{{p.Company_Name}}</td>
+                        <td>{{p.Custommer_Name}}</td>
+                        <td>{{p.Mobile}}</td>
+                        <td>{{p.Address}}</td>
+                        <td>
+                            <i class="fa fa-edit" (click)="setEditData(p)"></i>
+                            <i class="fa fa-trash" (click)="deleteCusto(p)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp-copy">
+            <span>Total Suppliyer: <b>{{totalCustommer}}</b></span>
+        </div>
+    </div>
+    
+    <ng-template #other_content>
+        <h3 style="margin-top: 50px;">No Custommer Found....</h3>
+    </ng-template>
+</div> 

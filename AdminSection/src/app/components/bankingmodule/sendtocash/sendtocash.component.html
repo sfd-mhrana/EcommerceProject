@@ -1,0 +1,75 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Product</h4>
+        </div>  
+        <div class="form"> 
+            <form  [formGroup]="form" >
+                <div class="input-group">
+                    <select name=""
+                    [formControl]="$any(form).controls['bank_id']" id="position">
+                        <option value="none" disabled>Select a Bank</option>
+                        <option *ngFor="let p of allbank" value="{{p.id}}">{{p.bank_name}} - {{ p.account_number}}</option>
+                    </select> 
+                    <label for="position">Select Bank</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="number" name="" [formControl]="$any(form).controls['amount']" id="bankname" placeholder=" " />
+                    <label for="bankname">Amount</label>
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign">
+        <div class="form-hader search1">
+            <div class="surch-header">
+                <label for="from">Surch A Date :</label>
+                <input type="date"
+                #from (change)="fromProduct(from.value)"
+                name="" id="from" placeholder=" " />
+            </div>
+        </div>
+
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Bank Name</td>
+                        <td>Account No</td>
+                        <td>Details</td>
+                        <td>Date</td>
+                        <td>Amount</td>
+                        <td>Status</td>
+                        <!-- <td>Action</td> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of alltableItem">                      
+                        <td>{{p.bankdetails.bank_name}}</td>
+                        <td>{{p.bankdetails.account_number}}</td>                  
+                        <td>{{p.details}}</td>
+                        <td>{{p.date}}</td>
+                        <td>{{p.amount}}</td>
+                        <td>{{p.status}}</td>
+                        <!-- <td>
+                            <i class="fa fa-edit"   (click)="setEditData(p)" ></i>
+                            <i class="fa fa-trash" (click)="deleteproduct(p)"></i>
+                        </td> -->
+                    </tr>
+                        
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span> Credit: <b>{{totalcredit}}</b></span>
+            <span> Devit: <b>{{totaldevit}}</b></span>
+            <span>LastAmount: <b>{{lastamount}}</b></span>
+        </div>
+    </div>
+</div>

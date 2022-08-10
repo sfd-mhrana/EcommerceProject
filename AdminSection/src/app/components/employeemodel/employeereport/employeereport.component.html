@@ -1,0 +1,113 @@
+<div class="main-tableDesign">
+    <div class="form-hader search">
+        <div class="surch-header">
+            <div class="dropdown">
+                <div class="select">
+                    <label for="employeename">Employee Name :</label>
+                    <input id="employeename" onkeyup="surching.serrchFormDropDown('employeename','employeelist')"
+                        type="text" autocomplete="off" value="{{employeename}}">
+                    <i class="fa fa-chevron-left"></i>
+                </div>
+                <ul id="employeelist" class="dropdown-menu">
+                    <li *ngFor="let p of allEmployeeList" (click)="setName(p)" id="male">
+                        <img src="{{employeeimage}}/{{p.Employee_Image}}" alt="" width="30px" height="30px">
+                        <span>{{p.Employee_Name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+ 
+        <div class="surch-header">
+            <label for="from">From :</label>
+            <input type="date" name="" #from (change)="fromProduct(from.value)" id="from" placeholder=" " />
+        </div>
+        <div class="surch-header">
+            <label for="to">To :</label>
+            <input type="date" name=""  #to (change)="toProduct(to.value)"  id="to" placeholder=" " />
+        </div>
+
+    </div>  
+    <div class="table-design">
+        <div class="purchasesMain">
+            <div class="formDesign" >
+                <div class="form-hader">
+                    <h4>All Costing</h4>
+                </div>
+                <div class="table-design" *ngIf="allEmployeeAccountTableItem!=null && allEmployeeAccountTableItem.length>0;else other_content">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Date</td>
+                                <td>Type</td>
+                                <td>Amount</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of allEmployeeAccountTableItem">
+                             
+                                <td>{{p.employee.Employee_Name}}</td>
+                                <td>{{p.Date}}</td>
+                                <td>{{p.Type}}</td>
+                                <td>{{p.Amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ng-template #other_content>
+                    <div style="height: 40rem;">
+                        <h3 style="margin: 50px;">No Costing Record Found...</h3>
+                    </div>
+                </ng-template>
+                <div class="btn-grp"> 
+                    <span>Total Cost: <b>{{totalCost}}</b></span>
+                </div>
+            </div> 
+
+            <div class="tableDesign">
+                <div class="form-hader">
+                    <h4>All Sales</h4>
+                </div>
+                <div class="table-design" *ngIf="productTableItem!=null && productTableItem.length>0;else other_content2">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Invoice NO</td>
+                                <td>Category</td>
+                                <td>Date</td>
+                                <td>Product</td>
+                                <td>Quantaty</td>
+                                <td>Price</td>
+                                <td>Total</td>
+                                <td>Profit</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of productTableItem">
+                                <td>{{p.employee.Employee_Name}}</td>
+                                <td>{{p.Invoice_No}}</td>
+                                <td>{{p.Sales_Date}}</td>
+                                <td>{{p.category.Name}}</td>
+                                <td>{{p.product.Product_Name}}</td>
+                                <td>{{p.Quantaty}}</td>
+                                <td>{{p.Sales_Price}}</td>
+                                <td>{{p.Total_Price}}</td>
+                                <td>{{( (p.Sales_Price)-(p.product_g_r_n.Producut_Price))*p.Quantaty}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ng-template #other_content2>
+                    <div style="height: 40rem;">
+                        <h3 style="margin: 50px;">No Sales Record Found...</h3>
+                    </div>
+                </ng-template>
+                <div class="btn-grp">
+                    <span>Total Sales: <b>{{totalsales}}</b></span>
+                    <span>Total Profit: <b>{{totalprofit}}</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

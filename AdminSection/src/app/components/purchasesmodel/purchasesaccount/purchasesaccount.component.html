@@ -1,0 +1,91 @@
+<div class="main-tableDesign">
+    <div class="form-hader search2">
+        <div class="surch-header">
+            <div class="dropdown">
+                <div class="select">
+                    <label for="suppliyername">Suppliyer Name :</label>
+                    <input id="suppliyername" autocomplete="off"
+                        onkeyup="surching.serrchFormDropDown('suppliyername','suppliyerlist')" type="text"
+                        value="{{suppliyername}}" [readonly]="isReadOnly">
+                    <i class="fa fa-chevron-left"></i>
+                </div>
+                <ul id="suppliyerlist" class="dropdown-menu">
+                    <li *ngFor="let p of allSuppliyer" (click)="setInvioceItem(p)" id="male">
+                        <img src="{{suppliyeriamge}}/{{p.Suppliyer_Image}}" alt="" width="30px" height="30px">
+                        <span>{{p.Company_Name}}/{{p.Address}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="surch-header">
+            <div class="dropdown">
+                <div class="select">
+                    <label for="invoiceno">Select Invoice No :</label>
+                    <input id="invoiceno" onkeyup="surching.serrchFormDropDown('invoiceno','invoicelist')" type="text"
+                        autocomplete="off" value="{{invoiceno}}">
+                    <i class="fa fa-chevron-left"></i>
+                </div>
+                <ul id="invoicelist" class="dropdown-menu">
+
+                    <li *ngFor="let p of allInvoiceAcc" (click)="setInvoice(p)" id="male">
+                        <span>{{p.Invoice_No}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="table-design" *ngIf="tableItem!=null;else other_content">
+        <div *ngIf="tableItem.length>0;else othercom">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>Invoiec</td>
+                        <td>Date</td>
+                        <td>Total Item</td>
+                        <td>Total Amount</td>
+                        <td>Discount</td>
+                        <td>Paid</td>
+                        <td>Due</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of tableItem">
+                        <td>{{p.Company_Name}}</td>
+                        <td>{{p.Invoice_No}}</td>
+                        <td>{{p.Purchase_Date}}</td>
+                        <td>{{p.Total_Item}}</td>
+                        <td>{{p.Total_Amount}}</td>
+                        <td>{{p.Discount}}</td>
+                        <td>{{p.Paid}}</td>
+                        <td *ngIf="!singleinvoiceshow">{{p.Total_Amount-p.Discount-p.Paid}}</td>
+                        <td *ngIf="singleinvoiceshow">{{p.STotal_Amount-p.SDiscount-p.SPaid}}</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <td>Total :</td>
+                        <td *ngIf="!singleinvoiceshow">{{totalInvoice}}</td>
+                        <td *ngIf="singleinvoiceshow"></td>
+                        <td></td>
+                        <td *ngIf="!singleinvoiceshow"></td>
+                        <td *ngIf="singleinvoiceshow">{{totalInvoice}}</td>
+                        <td>{{totalAmount}}</td>
+                        <td>{{totalDiscount}}</td>
+                        <td>{{totalPaid}}</td>
+                        <td>{{totalDue}}</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <ng-template #othercom>
+            <h3 style="margin: 50px;">No Data Found</h3>
+        </ng-template>
+    </div>
+    <ng-template #other_content>
+        <div style="height: 40rem;">
+            <h3 style="margin: 50px;">Please, Select Cumpany Name See Details.</h3>
+        </div>
+
+    </ng-template>
+</div>

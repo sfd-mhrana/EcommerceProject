@@ -1,0 +1,8 @@
+{
+    "SERVER_URL": "http://127.0.0.1:8000/api/",
+    "Image_URL":"http://127.0.0.1:8000/storage/",
+    "THEME_COLORS": {
+      "PRIMARY": "#007bff",
+      "SECONDARY": "#fc3"
+    }
+}

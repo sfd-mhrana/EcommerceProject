@@ -1,0 +1,61 @@
+<div class="main-tableDesign" *ngIf="allproduct!=null;else other_content">
+    <div class="form-hader search">
+        <div class="surch-header">
+            <label for="name">Surch By Product Name :</label>
+            <input type="text" onkeyup="surching.searchFormTable('name','surchtable',5,'purchasesproduct')" name=""
+                id="name" placeholder=" " />
+        </div>
+    </div>
+    <div class="table-design">
+        <table id="surchtable" class="styled-table">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Company Name</td>
+                    <td>Inoive NO</td>
+                    <td>Date</td>
+                    <td>Category</td>
+                    <td>Product</td>
+                    <td>Quantaty</td>
+                    <td>Price</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of allproduct">
+                    <td>
+                        <img src="{{imgurl}}/{{p.product.Producut_Images}}"
+                            style="width: 50px; height: 50px; margin: 0;">
+                    </td>
+                    <td>{{p.Company_Name}}</td>
+                    <td>{{p.Invoice_No}}</td>
+                    <td>{{p.Purchase_Date}}</td>
+                    <td>{{p.category.Name}}</td>
+                    <td>{{p.product.Product_Name}}</td>
+                    <td>{{p.Quantaty}}</td>
+                    <td>{{p.Producut_Price}}</td>
+                    <td>{{p.Total_Price}}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <td>Total </td>
+                    <td></td>
+                    <td>Item : <b id="totalitem" value="">{{totalItem}}</b></td>
+                    <td></td>
+                    <td></td>
+                    <td>Quantaty</td>
+                    <td> <b id="totalquentaty" value="">{{totalQuentaty}}</b></td>
+                    <td>Amount</td>
+                    <td><b id="totalamount" value="">{{totalAmount}}</b></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<ng-template #other_content>
+    <div style="height: 40rem;">
+        <h3 style="margin: 50px;">Please, Select Cumpany Name See Details.</h3>
+    </div>
+</ng-template>

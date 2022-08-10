@@ -1,0 +1,59 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4 >Fill All field for Enter new Product</h4>
+        </div>  
+        <div class="form">
+            <form [formGroup]="addCategory">
+                <div class="input-group">
+                    <input type="text"autocomplete="off"  formControlName="Name"   name="" id="categoryname" placeholder=" " />
+                    <label for="categoryname">Enter New Category Name</label>
+                </div>
+                 
+                <div class="btn-grp">
+                    <strong (click)=" close()">Clear</strong>
+                    <strong *ngIf="!updateD" (click)="onSubmit()" type="submit">Submit</strong>
+                    <strong *ngIf="updateD" (click)="update()" type="submit">Update</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign" *ngIf="this.allcategory.length>0;else other_content">
+        <div class="form-hader search1">
+            <div class="surch-header">
+                <label for="name">Surch By Name From All Product List :</label>
+                <input type="text" onkeyup="surching.searchFormTable('name','surchtable',1,'catrgorytable')" name="" id="name"
+                    placeholder=" " />
+            </div>
+        </div> 
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Category Name</td>
+                        <td>Added Date</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of allcategory">
+                        <td>{{p.id}}</td>
+                        <td>{{p.Name}}</td>
+                        <td>{{(p.created_at).substring(0,10)}}</td>
+                        <td>
+                            <i (click)="editset(p.id,p.Name)" class="fa fa-edit"></i>
+                            <i (click)="delete(p)"  class="fa fa-trash"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Product: <b id="showtotalcategoryindex">{{totalCategory}}</b></span>
+        </div>
+    </div>
+    <ng-template #other_content>
+        <h3 style="margin-top: 50px;">No Category Found....</h3>
+    </ng-template>
+</div>

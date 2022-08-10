@@ -1,0 +1,60 @@
+<div class="main-tableDesign">
+    <div class="form-hader search">
+        <div class="surch-header"> 
+            <label for="from">From :</label>
+            <input type="date" #from (change)="fromProduct(from.value)" name="" id="from" placeholder=" " />
+        </div>
+        <div class="surch-header">
+            <label for="to">To :</label>
+            <input type="date"  #to (change)="toProduct(to.value)"  name="" id="to" placeholder=" " />
+        </div>
+
+    </div>
+    <div class="table-design">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <td>Company Name</td>
+                    <td>Inoive NO</td>
+                    <td>Employee</td>
+                    <td>Date</td>
+                    <td>Category</td>
+                    <td>Product</td>
+                    <td>GRN</td>
+                    <td>Purchases Price</td>
+                    <td>Sales Price</td>
+                    <td>Sales Quantaty</td>
+                    <td>Single Profit</td>
+                    <td>Total Profit</td>
+                    <td>Total Amount</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of allTableItem">
+                    <td>{{p.Company_Name}}</td>
+                    <td>{{p.Invoice_No}}</td>
+                    <td>{{p.employee.Employee_Name}}</td>
+                    <td>{{p.Sales_Date}}</td>
+                    <td>{{p.category.Name}}</td>
+                    <td>{{p.product.Product_Name}}</td>
+                    <td>{{p.GRN}}</td>
+                    <td>{{p.product_g_r_n.Producut_Price}}</td>
+                    <td>{{p.Sales_Price}}</td>
+                    <td>{{p.Quantaty}}</td>
+                    <td>{{ (p.Sales_Price)-(p.product_g_r_n.Producut_Price)}}</td>
+                    <td>{{( (p.Sales_Price)-(p.product_g_r_n.Producut_Price))*p.Quantaty}}</td>
+                    <td>{{p.Total_Price}}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <td colspan="6">All Total</td>
+                    <td colspan="2">Total Index  :<span id="total_index">{{totalIndex}}</span></td>
+                    <td colspan="3"></td>
+                    <td id="total_profit">{{totalProfit}}</td>
+                    <td id="total_amount">{{totalSales}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

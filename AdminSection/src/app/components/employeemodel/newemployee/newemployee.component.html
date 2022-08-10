@@ -1,0 +1,106 @@
+<div class="purchasesMain"> 
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Employee</h4>
+        </div> 
+        <div class="form">
+            <form  [formGroup]="form">
+                <div class="input-group">
+                    <input type="text"autocomplete="off"  [formControl]="$any(form).controls['Employee_Name']"  name="" id="employeename" placeholder=" " />
+                    <label for="employeename">Employee Name</label>
+                </div>
+               
+                <div class="input-group">
+                    <input type="number"autocomplete="off"  [formControl]="$any(form).controls['Mobile']"  name="" id="mobile" placeholder=" " />
+                    <label for="mobile">Mobile No</label>
+                </div>
+                <div class="input-group">
+                    <input type="text"autocomplete="off" [formControl]="$any(form).controls['Salary']" name="" id="salary" placeholder=" " />
+                    <label for="salary">Basic Salary</label>
+                </div>
+                <div class="input-group">
+                    <input type="text"autocomplete="off"  [formControl]="$any(form).controls['Address']"  name="" id="address" placeholder=" " />
+                    <label for="address">Address</label>
+                </div>
+                <div class="input-group">
+                    <select name=""autocomplete="off"  [formControl]="$any(form).controls['Position']" id="position">
+                        <option value="Managing Director">Managing Director</option>
+                        <option value="Manager">Manager</option>
+                        <option value="IT Officer">IT Officer </option>
+                        <option value="SR">SR</option>
+                        <option value="Dailybary Boy">Dailybary Boy</option>
+                    </select>
+                    <label for="position">Position</label>
+                </div>
+                <div class="input-group">
+                    <input type="file"autocomplete="off"  (change)="uploadImage($event)" [formControl]="$any(form).controls['Employee_Image']" name="" id="image" placeholder=" " />
+                    <label for="image">Choose Image</label>
+                </div>
+                <div class="imageselect">
+                    <img id="selectimage"  [src]="imageSrc || 'http://placehold.it/180'"  alt="">
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form> 
+        </div>
+    </div>
+
+    <div class="tableDesign" *ngIf="allEmployee!=null && allEmployee.length>0;else other_content">
+        <div class="form-hader search2">
+            <div class="surch-header">
+                <h3>All Employee List Transection</h3>
+            </div>
+            <div class="surch-header">
+                <label for="to">Surch By ID :</label>
+                <input type="text"
+                onkeyup="surching.searchFormTable('name','surchtable',1,'employee')" name=""
+                id="name" placeholder=" "/>
+            </div>
+        </div>
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td style="width: 5%;">ID</td>
+                        <td>Name</td>
+                        <td>Mobile</td>
+                        <td>Position</td>
+                        <td>Salary</td>
+                        <td>Address</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let p of allEmployee">
+                        <td>
+                            <img src="{{imgurl}}/{{p.Employee_Image}}" style="width: 50px; height: 50px; margin: 0;">
+                        </td>
+                        <td >{{p.Employee_ID}}</td>
+                        <td>{{p.Employee_Name}}</td>
+                        <td>{{p.Mobile}}</td>
+                        <td>{{p.Position}}</td>
+                        <td>{{p.Salary}}</td>
+                        <td>{{p.Address}}</td>
+                        <td>
+                            <i class="fa fa-edit"  (click)="setEditData(p)" ></i>
+                            <i class="fa fa-trash"  (click)="deleteEmployee(p.Employee_ID)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Employee: <b  id="totalTableResult" >{{TotalEmployee}}</b></span>
+        </div>
+    </div>
+
+    <ng-template #other_content>
+        <div style="height: 40rem;">
+            <h3 style="margin: 50px;">No Employee Record Found...</h3>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,120 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Product</h4>
+        </div>  
+        <div class="form"> 
+            <form [formGroup]="form"> 
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="loanpersonname"
+                                    onkeyup="surching.serrchFormDropDown('loanpersonname','loanpersonlist')" type="text"
+                                    [formControl]="$any(form).controls['Loan_ID']"
+                                    autocomplete="off" value="{{loanpersonname}}">
+                                <label for="loanpersonname">Select ID For Edit Or Paid..</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="loanpersonlist" class="dropdown-menu">
+                            <li (click)="newClear('New Loan')" id="male">
+                                <span>New Loan</span>
+                            </li>
+                            <li *ngFor="let p of allloanId" (click)="setName(p)" id="male">
+                                <span>{{p}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="details"
+                    [formControl]="$any(form).controls['Details']" 
+                    [readonly]="readonly"
+                    placeholder=" " />
+                    <label for="details">Details </label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" 
+                    [formControl]="$any(form).controls['Amount']" 
+                    id="amount" placeholder=" "
+                    />
+                    <label for="amount">Enter Amount</label>
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clear()">Clear</strong>
+                    <strong *ngIf="!update" (click)="submit()">Submit</strong>
+                    <strong *ngIf="update" (click)="updatedata()">Update</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign">
+        <div class="form-hader search1">
+            <div class="surch-header">
+                <label for="name">Surch By Name From All Product List :</label>
+                <input type="text" onkeyup="surching.searchFormTable('name','surchtable',2,'loanSurch')" name="" id="name"
+                    placeholder=" " />
+            </div>
+        </div>
+        <div class="table-design" *ngIf="!SingleIdDetails">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Loan ID</td>
+                        <td>Date</td>
+                        <td>Details</td>
+                        <td>Loan Amount</td>
+                        <td>Paid Amount</td>
+                        <td>Due Amount</td>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let p of allTableItem">
+                        <td>{{p.loanid}}</td>
+                        <td>{{p.date}}</td>
+                        <td>{{p.details}}</td>
+                        <td>{{p.paidamount}}</td>
+                        <td>{{p.dueAmount}}</td>
+                        <td>{{p.paidamount-p.dueAmount}}</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td id="loanamount">{{totalloanamount}}</td>
+                        <td id="paidamount">{{totalpaidAmount}}</td>
+                        <td id="dueamount">{{totalDueAmount}}</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-design" *ngIf="SingleIdDetails">
+            <table id="" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Loan ID</td>
+                        <td>Date</td>
+                        <td>Details</td>
+                        <td>Amount</td>
+                        <td>Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <tr *ngFor="let p of allTableItem">
+                        <td>{{p.LoanID}}</td>
+                        <td>{{p.Date}}</td>
+                        <td>{{p.Details}}</td>
+                        <td>{{p.Amount}}</td>
+                        <td>{{p.Status}}</td>
+                        <td *ngIf="p.Status!='Credit'">
+                            <i class="fa fa-edit" (click)="setUpdate(p)"></i>
+                            <i class="fa fa-trash" (click)="delete(p)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

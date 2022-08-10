@@ -1,0 +1,96 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Paid Amount</h4>
+        </div>  
+        <div class="form">  
+            <form action=""> 
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="invoiceno"
+                                onkeyup="surching.serrchFormDropDown('invoiceno','invoicelist')"
+                                type="text" autocomplete="off"  value="{{invoiceno}}">
+                                <label for="invoiceno">Select Invoice</label>
+                            </span> 
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="invoicelist" class="dropdown-menu">
+                            <li *ngFor="let p of allInvoices" (click)="setInvoice(p)" id="">
+                                <span>{{p.Invoice_No}}</span>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="totalamount" placeholder=" " autocomplete="off" value="{{dueAmoutn}}" readonly="true"/>
+                    <label for="totalamount">Sales Due Amount</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="discount" autocomplete="off" (change)="setLastDue($event)" value="{{discount}}" [readonly]="blockaccount" placeholder=" " />
+                    <label for="discount">Sales Discount</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="paid" autocomplete="off" (change)="setLastDuep($event)" value="{{paidAmount}}" [readonly]="blockaccount" placeholder=" " />
+                    <label for="paid">Sales Paid</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="lastdue" placeholder=" " value="{{lastDue}}" readonly="true"/>
+                    <label for="lastdue">Sales Last Due</label>
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clear()">Clear</strong>
+                    <strong *ngIf="!updateD" (click)="submit()">Submit</strong>
+                    <strong *ngIf="updateD" (click)="updateSalesPaid()">Update</strong>
+                </div>
+            </form>
+        </div> 
+    </div>
+    <div class="tableDesign">
+        <div class="form-hader">
+            <h4 *ngIf="singleInvoiceAcc!=null">All Account Details on <b>'{{invoiceno}}'</b> from this <b>"{{custommername}}"</b></h4>
+            <h4 *ngIf="singleInvoiceAcc==null">All Account Details</h4>
+        </div>
+        <div class="table-design">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Invoiec</td>
+                        <td>Date</td>
+                        <td>Total Item</td>
+                        <td>Total Amount</td>
+                        <td>Discount</td>
+                        <td>Paid</td>
+                        <td>Due</td>
+                        <td  *ngIf="singleInvoiceAcc!=null">Status</td>
+                        <td  *ngIf="singleInvoiceAcc!=null">Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of allTableItem">
+                        <td>{{p.Invoice_No}}</td>
+                        <td>{{p.Sales_Date}}</td>
+                        <td>{{p.Total_Item}}</td>
+                        <td>{{p.Total_Amount}}</td>
+                        <td>{{p.Discount}}</td>
+                        <td>{{p.Paid}}</td>
+                        <td  *ngIf="singleInvoiceAcc==null">{{p.Total_Amount-p.Discount-p.Paid}}</td>
+                        <td  *ngIf="singleInvoiceAcc!=null">{{p.STotal_Amount-p.SDiscount-p.SPaid}}</td>
+                        <td  *ngIf="singleInvoiceAcc!=null">{{p.Status}}</td>
+                        <td *ngIf="singleInvoiceAcc!=null && p.Total_Amount==0"> 
+                            <i class="fa fa-edit" (click)="setUpdate(p)"></i>
+                            <i class="fa fa-trash" (click)="delete(p)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span *ngIf="singleInvoiceAcc==null">Total Bill: <b>{{allTableItem.length}}</b></span>
+            <span *ngIf="singleInvoiceAcc!=null">Total Bill: <b>1</b></span>
+            <span>Total Amount: <b>{{totalAmount}}</b></span>
+            <span>Total Due: <b>{{TotalDue}}</b></span>
+        </div>
+    </div>
+</div>

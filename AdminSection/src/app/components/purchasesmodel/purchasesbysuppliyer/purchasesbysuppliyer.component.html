@@ -1,0 +1,75 @@
+<div class="main-tableDesign">
+    <div class="form-hader search2">
+        <div class="surch-header">
+            <div class="dropdown">
+                <div class="select">
+                    <label for="suppliyername">Suppliyer Name :</label>
+                    <input id="suppliyername" autocomplete="off"
+                                    onkeyup="surching.serrchFormDropDown('suppliyername','suppliyerlist')"
+                                    type="text"
+                                    value="{{suppliyername}}">
+                    <i class="fa fa-chevron-left"></i>
+                </div>
+                <ul id="suppliyerlist" class="dropdown-menu">
+                    <li *ngFor="let p of allSuppliyer" (click)="setName(p)"
+                    id="male">
+                        <img src="{{suppliyeriamge}}/{{p.Suppliyer_Image}}" alt="" width="30px" height="30px">
+                        <span 
+                        id="suppliyersurch">{{p.Company_Name}}/{{p.Address}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div> 
+    </div> 
+
+    <div class="table-design" *ngIf="tableItem!=null && tableItem.length>0;else other_content">
+        <table id="surchtable" class="styled-table">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Company Name</td>
+                    <td>Inoive NO</td>
+                    <td>Date</td>
+                    <td>Category</td>
+                    <td>Product</td>
+                    <td>Quantaty</td>
+                    <td>Price</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let p of tableItem">
+                    <td>
+                        <img src="{{imgurl}}/{{p.product.Producut_Images}}" style="width: 50px; height: 50px; margin: 0;">
+                    </td>
+                    <td>{{p.Company_Name}}</td>
+                    <td>{{p.Invoice_No}}</td>
+                    <td>{{p.Purchase_Date}}</td>
+                    <td>{{p.category.Name}}</td>
+                    <td>{{p.product.Product_Name}}</td>
+                    <td>{{p.Quantaty}}</td>
+                    <td>{{p.Producut_Price}}</td>
+                    <td>{{p.Total_Price}}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <td>Total </td>
+                    <td></td>
+                    <td>Item        : <b  id="totalitem" value="">{{totalItem}}</b></td>
+                    <td></td>
+                    <td></td>
+                    <td>Quantaty</td>
+                    <td> <b  id="totalquentaty" value="">{{totalQuentaty}}</b></td>
+                    <td>Amount</td>
+                    <td><b  id="totalamount" value="">{{totalAmount}}</b></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <ng-template #other_content>
+        <h3 style="margin-top: 50px;">No Record Found.</h3>
+    </ng-template>
+
+</div>

@@ -1,0 +1,108 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Product</h4>
+        </div>
+        <div class="form">
+            <form [formGroup]="form">
+                <div class="input-group">
+                    <input type="text" name="" [formControl]="$any(form).controls['Product_ID']" id="productid"
+                        placeholder=" " />
+                    <label for="productid">Product ID</label>
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="categoryname" [formControl]="$any(form).controls['Product_Category_ID']"
+                                    onkeyup="surching.serrchFormDropDown('categoryname','categorylist')" type="text"
+                                    autocomplete="off" value="{{categoryname}}">
+                                <label for="categoryname">Category Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="categorylist" class="dropdown-menu">
+                            <li *ngFor="let p of allCategory" (click)="setCategory(p.id,p.Name)" id="male">
+                                <span>{{p.Name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" autocomplete="off"  [formControl]="$any(form).controls['Product_Name']" id="productname"
+                        placeholder=" " />
+                    <label for="productname">Product Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name=""autocomplete="off"  [formControl]="$any(form).controls['Producut_Price']" id="price"
+                        placeholder=" " />
+                    <label for="price">Price</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="" autocomplete="off"  [formControl]="$any(form).controls['Producut_Details']" id="discription"
+                        placeholder=" " />
+                    <label for="discription">Discription</label>
+                </div>
+                <div class="input-group">
+                    <input type="file" (change)="uploadImage($event)"
+                        [formControl]="$any(form).controls['Producut_Images']" name="" id="image" placeholder=" " />
+                    <label for="image">Choose Image</label>
+                </div>
+                <div class="imageselect">
+                    <img id="selectimage" [src]="imageSrc || 'http://placehold.it/180'" alt="">
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div> 
+    <div class="tableDesign"  *ngIf="allproducts.length>0;else other_content">
+        <div class="form-hader search1">
+            <div class="surch-header">
+                <label for="name">Surch By Name From All Product List :</label>
+                <input type="text" onkeyup="surching.searchFormTable('name','surchtable',2)" name="" id="name"
+                    placeholder=" " />
+            </div>
+        </div>
+
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Category</td>
+                        <td>Product</td>
+                        <td>Price</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of allproducts">
+                        <td>
+                            <img src="{{imgurl}}/{{p.Producut_Images}}" style="width: 50px; height: 50px; margin: 0;">
+                        </td>
+                        <td>{{p.category.Name}}</td>
+                        <td>{{p.Product_Name}}</td>
+                        <td>{{p.Producut_Price}}</td>
+                        <td>
+                            <i class="fa fa-edit" (click)="setEditData(p)"></i>
+                            <i class="fa fa-trash" (click)="deleteproduct(p)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Product: <b>{{totalProduct}}</b></span>
+        </div>
+    </div>
+
+    <ng-template #other_content>
+        <h3 style="margin-top: 50px;">No Product Found....</h3>
+    </ng-template>
+</div>

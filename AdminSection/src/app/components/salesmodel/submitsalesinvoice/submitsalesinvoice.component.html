@@ -1,0 +1,58 @@
+<div class="main-tableDesign">
+    <div class="form-hader search">
+        <div class="surch-header">
+            <h3>All Unsubmited Invoices </h3>
+        </div>
+        <div class="surch-header">
+            <label for="from">From :</label>
+            <input type="date" #from (change)="fromProduct(from.value)" name="" id="from" placeholder=" " />
+        </div>
+        <div class="surch-header">
+            <label for="to">To :</label>
+            <input type="date" #to (change)="toProduct(to.value)" name="" id="to" placeholder=" " />
+        </div>
+
+    </div>
+    <div class="table-design"  *ngIf="readonly;else other_content">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <td>SR Name</td>
+                    <td>Company Name</td>
+                    <td>Inoive NO</td>
+                    <td>Date</td>
+                    <td>Total Item</td>
+                    <td>Total Amount</td>
+                    <td>Discount Amount</td>
+                    <td>Paid Amount</td>
+                    <td>Due Amount</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr *ngFor="let p of tableItem">
+                    <td>{{p.employeeName}}</td>
+                    <td>{{p.cumpanyname}}</td>
+                    <td>{{p.invoiceNO}}</td>
+                    <td>{{p.Date}}</td>
+                    <td>{{p.totalItem}}</td>
+                    <td>{{p.totalAmount}}</td>
+                    <td><input type="number" value="{{p.discount}}" (change)="setDueD($event,p)" style="width: 100px; height: 30px;"></td>
+                    <td><input type="number" value="{{p.paid}}" (change)="setDueP($event,p)" style="width: 100px; height: 30px;"></td>
+                    <td>{{p.due}}</td>
+                    <td>
+                        <i class="fa fa-paper-plane" (click)="submitinvoice(p)"></i>
+                        <i class="fa fa-edit" (click)="goToEditData(p)" routerLink="/sales/new"></i>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <ng-template #other_content>
+        <div style="height: 40rem;">
+            <h3 style="margin: 50px;"  *ngIf="noData">No Invoice Found</h3 >
+            <h3 style="margin: 50px;"  *ngIf="!noData">Please Wait.....</h3 >
+        </div>
+    </ng-template>
+</div>

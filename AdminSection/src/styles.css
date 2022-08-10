@@ -1,0 +1,601 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+:root{
+    --main-color:#DD2F6E;
+    --color-dark:#1D2231;
+    --text-grey:#8390A2;
+    --body: #ffffff;
+    --text: #363636;
+    --text-light: #898989;
+    --primary: #1bbeff;
+    --border: #bbbbbb;
+    --padding: 12px 20px;
+    --line-height: 24px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-size: 'Poppins',sans-serif;
+}
+
+.sidebar{
+    width: 250px;
+    position: fixed;
+    left: 0;
+    z-index: 100;
+    top: 0;
+    height: 100%;
+    background:rgba(72, 187, 240, 0.8);
+}
+
+table thead tr td{
+    cursor: pointer;
+}
+
+.sidebar-brand{
+    height: 77px;
+    padding: 1rem 0rem 1rem .5rem;
+    color: #fff;
+    background: rgba(106, 221, 242, 0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-brand span{
+    display: inline-block;
+}
+
+.sidebar-menu li{
+    width: 100%;
+    margin-bottom: 1.3rem;
+    padding-left: 1rem;
+}
+
+.sidebar-menu a{
+    padding-left: 1rem;
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
+}
+.sidebar-menu{
+    margin-top: 2rem;
+}
+.sidebar-menu a.active{
+    background: #fff;
+    padding-top: 1rem; 
+    padding-bottom: 1rem;
+    color: var(--main-color);
+    border-radius: 30px 0px 0px 30px;
+}
+.sidebar-menu a.des{
+    background: rgb(124, 230, 216);
+    padding-top: 1rem; 
+    padding-bottom: 1rem;
+    border-radius: 30px 0px 0px 30px;
+}
+
+.sidebar-menu a span:first-child{
+ font-size: 1.5rem;
+ padding-right: 1rem;   
+}
+
+.main-content{
+    margin-left: 250px;
+}
+
+/* Header Section */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fdfdfd;
+    top: 0;
+    z-index: 1;
+}
+.search-wrapper{
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper span{
+    display: inline-block;
+    padding: 0rem 1rem;
+    font-size: 1.5rem;
+}
+
+.search-wrapper input{
+   height: 100%;
+   padding: .5rem;
+   border: none;
+   margin-right: 15px;
+   outline: none;
+}
+
+.user-wrapper{
+    display: flex;
+    align-items: center;
+}
+.user-wrapper img{
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.user-wrapper h4{
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.user-wrapper small{
+    display: inline-block;
+    color: var(--text-grey);
+}
+
+/* Main section */
+main{
+    margin-top: 10px;;
+    padding: .5rem 1rem;
+    min-height: calc(100vh - 90px);
+}
+.cards{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    z-index: 999;
+}
+
+
+/* Css for purchases */
+
+.cards .card-items{
+    width: 100%;
+    display:grid;
+    border: 0;
+    grid-template-columns: repeat(7,1fr);
+    grid-gap: 2rem;
+}
+.btn-info{
+      background-color: #69cddf; /* Green */
+}
+.btn{
+    font-size: 15px;
+    padding: 5px;
+    border: unset;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgb(235, 226, 226);
+    outline: 0;
+    position: relative;
+}
+.cards .card-items .card-item button i{
+    width: 20%;
+    float: left;
+    font-size: 30px;
+}
+.cards .card-items .card-item button span{
+    width: 70%;
+    float: right;
+    padding: 1;
+}
+
+ 
+/* Purchases Main section */
+.purchasesMain{
+    width: 100%;
+    display:grid;
+    border: 0;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+    padding-top: 20px;
+}
+.purchasesMain .formDesign{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    height: 50rem;
+}
+.purchasesMain .tableDesign{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    height: 50rem;
+    width: 40.5rem;
+}
+
+.purchasesMain .invoicetable{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    height: 60rem;
+}
+
+.main-tableDesign{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+}
+ 
+.scroll-main-tableDesign{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+    height: 50rem;
+}
+
+.form-hader .surch-header label{
+    font: optional;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 15px;
+} 
+
+.form-hader .surch-header input{
+    font: optional;
+    font-size: 15px;
+    padding: 5px;
+}
+.search .surch-header{
+    width: fit-content; 
+}
+.search1 .surch-header{
+    width: fit-content;
+}
+.search2 .surch-header{
+    width: fit-content;
+}
+.search{
+    display:grid;
+    border: 0;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.search1{
+    display:grid;
+   border: 0;
+   grid-template-columns: 2fr;
+}
+.search2{
+   display:grid;
+   border: 0;
+   grid-template-columns: 1.5fr 2fr;
+}
+.form-hader{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+   
+}
+.form-hader span{
+   font-size: .8rem;
+}
+
+.radiobuttondesing {
+    width: 360px;
+    position: relative;
+    border: 3px solid var(--border);
+    border-radius: 8px;
+    margin: 15px;
+  }
+.radio-group{
+    margin: 10px;
+}
+.radio-group input{
+    margin-left: 20px;
+}
+
+.input-group {
+    width: 360px;
+    position: relative;
+    border: 3px solid var(--border);
+    border-radius: 8px;
+    margin: 15px;
+  }
+.input-group input {
+    padding: var(--padding);
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    color: var(--text);
+    font-size: 16px;
+    line-height: var(--line-height);
+  }
+ 
+  .input-group p {
+    padding: var(--padding);
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    color: var(--text);
+    font-size: 20px;
+    line-height: var(--line-height);
+  } 
+
+.input-group select {
+    padding: var(--padding);
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    color: var(--text);
+    font-size: 16px;
+    line-height: var(--line-height);
+  }
+
+  .input-group input:focus,
+  .input-group:hover input {
+    color: var(--primary);
+
+  }
+  .input-group select:focus,
+  .input-group:hover select {
+    color: var(--primary);
+  }
+  .input-group label {
+    position: absolute;
+    background-color: transparent;
+    padding: var(--padding);
+    line-height: var(--line-height);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    color: var(--text-light);
+    cursor: text;
+  }
+
+ .input-group:focus-within label,
+  .input-group input:not(:placeholder-shown) ~ label {
+    padding: 0px 8px;
+    background-color: var(--body);
+    top: -12px;
+    left: 16px;
+    bottom: auto;
+    color: var(--text);
+  }
+  .input-group:focus-within label,
+  .input-group select:not(:placeholder-shown) ~ label {
+    padding: 0px 8px;
+    background-color: var(--body);
+    top: -12px;
+    left: 16px;
+    bottom: auto;
+    color: var(--text);
+  }
+  .input-group .plabel,
+  .input-group p:not(:placeholder-shown) ~ label {
+    padding: 0px 8px;
+    background-color: var(--body);
+    top: -12px;
+    left: 16px;
+    bottom: auto;
+    color: var(--text);
+  }
+.btn-grp-copy {
+    margin: 35px;
+   text-align: right;
+}
+.btn-grp {
+     margin : 30px;
+     text-align: right;
+  }
+.btn-grp strong{
+    border: 1px solid;
+    width: 50%; 
+    border-radius: 8px;
+    background-color: transparent;
+    padding: 8px 20px;
+    margin: 20px;
+    align-items: left;
+    cursor: pointer;
+}
+
+.btn-grp span{
+    width: 50%; 
+    padding: 8px 20px;
+    margin: 0px;
+    align-items: left;
+    cursor: pointer;
+}
+.cash span{
+    width: 30%; 
+    padding:5px 15px;
+    margin: 10px;
+    align-items: left;
+    cursor: pointer;
+}
+.btn-inv {
+    margin : 20px;
+    text-align: right;
+ }
+.invoicecas span{
+    width: 10px;
+    align-items: left;
+    cursor: pointer;
+}
+
+.invoicecas .btnsp{
+    border: 1px solid;
+    width: 50%; 
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-design {
+    margin-top: 1rem;
+    height: 75%;
+    overflow: auto;
+} 
+.styled-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    width: 100%;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.table-design thead tr{
+    position: sticky;
+    top: 0;
+}
+.styled-table thead tr {
+    background-color: #6DC9F3;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table tbody tr td i{
+    margin: 5px;
+    margin-left:20px ;
+    cursor: pointer;
+    font-size: 20px;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #6DC9F3;
+}
+.imageselect{
+    margin-left: 20px;
+    width: 50%;
+}
+.imageselect img{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+
+
+
+/*Styling Selectbox*/
+.dropdown {
+    width: 100%;
+    display: inline-block;
+    border-radius: 2px;
+    transition: all .5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left
+  }
+  .dropdown .select {
+      cursor: pointer;
+      display: block;
+  }  
+  .dropdown .select span{
+    width: 80%;
+    float: left;
+}  
+  .dropdown .select > i {
+      font-size: 13px;
+      color: #888;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      padding: 15px;
+      margin-left: 10px;
+  }
+  .dropdown ul li span{
+    vertical-align: top;
+    text-align: left;
+    margin-left: 10px;
+    font-size: 1rem;
+    }
+
+  .dropdown:hover {
+      box-shadow: 0 0 4px rgb(204, 204, 204)
+  }
+  .dropdown:active {
+      background-color: #f8f8f8
+  }
+  .dropdown.active:hover,
+  .dropdown.active {
+      box-shadow: 0 0 4px rgb(204, 204, 204);
+      border-radius: 2px 2px 0 0;
+      background-color: #f8f8f8
+  }
+  .dropdown.active .select > i {
+      transform: rotate(-90deg)
+  } 
+  .dropdown .dropdown-menu {
+      position: absolute;
+      background-color: #fff;
+      width: 100%;
+      left: 0;
+      margin-top: 1px;
+      box-shadow: 0 1px 2px rgb(204, 204, 204);
+      border-radius: 0 1px 2px 2px;
+      overflow: hidden;
+      display: none;
+      max-height: 144px;
+      overflow-y: auto;
+      z-index: 9
+  }
+  .dropdown .dropdown-menu li {
+      padding: 10px;
+      transition: all .2s ease-in-out;
+      cursor: pointer
+  } 
+  .dropdown .dropdown-menu {
+      padding: 0;
+      list-style: none;
+  }
+  .dropdown .dropdown-menu li:hover {
+      background-color: #f2f2f2
+  }
+  .dropdown .dropdown-menu li:active {
+      background-color: #e2e2e2
+  }
+
+
+
+.deshbord{
+    float: left;
+      width: 64%;
+      height: 1000px;
+      margin-bottom: 20px;
+}
+.deshbord2{
+    float: left;
+      width: 100%;
+      height: 1000px;
+      margin-bottom: 20px;
+}
+  
+.deshbord1{
+    float: right;
+    width: 34%;
+    height: 1000px;
+  }
+  .barclass{
+      width: 100%;
+      height: 50%;  
+  }
+  .barclass canvas{
+   overflow-x: scroll; 
+}
+.topproduct{
+    width: 100%;
+    height: 50%;
+}
+.table-design table tbody{
+    width:50px;
+    height: 20px;
+    overflow-y: scroll;
+}
+.topcustommer{
+    width: 100%;
+    height: 50%;
+}
+.topsuppliyer{
+  width: 100%;
+  height: 50%;
+}

@@ -1,0 +1,51 @@
+<div class="main-tableDesign">
+    <div class="form-hader search">
+       <div class="surch-header">
+            <label for="to">Select a Date For Month :</label>
+            <input type="date" name="" #dateformonth (change)="SelectMonth(dateformonth.value)" id="from" placeholder=" " />
+        </div>
+
+    </div> 
+    <div class="table-design"  *ngIf="tableItem!=null;else other_content">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Employee Name</td>
+                    <td>Date</td>
+                    <td>Total Sales</td>
+                    <td>Total Profit</td>
+                    <td>Total Costing</td>
+                    <td>Total Return amount</td>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr *ngFor="let p of tableItem">
+                    <td>
+                        <img src="{{employeeimage}}/{{p.EmployeeImage}}" style="width: 50px; height: 50px; margin: 0;">
+                    </td>
+                    <td>{{p.EmployeeName}}</td>
+                    <td>{{p.MonthDate}}</td>
+                    <td>{{p.TotalSales}}</td>
+                    <td>{{p.TotalProfit}}</td>
+                    <td>{{p.TotalCost}}</td>
+                    <td>{{p.totalReturn}}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <td colspan="3">All Total in Selected Month</td>
+                    <td>{{totalSales}}</td>
+                    <td>{{totalProfit}}</td>
+                    <td>{{totalCost}}</td>
+                    <td>{{totalProfit}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <ng-template #other_content>
+        <div style="height:40rem;">
+            <h3 style="margin: 50px;">Please, Select A Date</h3>
+        </div>
+    </ng-template>
+</div>

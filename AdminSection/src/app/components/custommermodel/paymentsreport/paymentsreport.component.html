@@ -1,0 +1,82 @@
+<div class="tableDesign">
+    <div class="form-hader search">
+        <div class="surch-header">
+            <div class="dropdown">
+                <div class="select">
+                    <label for="custommername">Custommer Name :</label>
+                    <input id="custommername" onkeyup="surching.serrchFormDropDown('custommername','custommerlist')"
+                        type="text" autocomplete="off" value="{{custommername}}">
+                    <i class="fa fa-chevron-left"></i>
+                </div>
+                <ul id="custommerlist" class="dropdown-menu">
+                    <li *ngFor="let p of allcustommer" (click)="setName(p)" id="">
+                        <span>{{p.Company_Name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="surch-header">
+            <label for="from">From :</label>
+            <input type="date" name=""
+            #from (change)="fromProduct(from.value)"
+            id="from" placeholder=" " />
+        </div> 
+        <div class="surch-header">
+            <label for="to">To :</label>
+            <input type="date" name="" 
+            #to (change)="toProduct(to.value)"
+            id="to" placeholder=" " />
+        </div>
+
+    </div>
+    
+    <div class="table-design"  *ngIf="tableItem!=null && tableItem.length>0;else other_content">
+        <table id="surchtable" class="styled-table">
+            <thead>
+                <tr>
+                    <td>Company Name</td>
+                    <td>Date</td>
+                    <td>Inoive NO</td>
+                    <td>Total Amount</td>
+                    <td>Discount</td>
+                    <td>Paid</td>
+                    <td>Last Due</td>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr  *ngFor="let p of tableItem">
+                    <td>{{p.Company_Name}}</td>
+                    <td>{{p.Sales_Date}}</td>
+                    <td>
+                       <tr *ngFor="let s of p.Invoices">
+                           <td  *ngIf="s.Company_Name==p.Company_Name">{{s.Invoice_No}} </td>
+                       </tr>
+                    </td>
+                    <td>
+                        <tr *ngFor="let s of p.Invoices">
+                            <td *ngIf="s.Company_Name==p.Company_Name">{{s.Total_Amount}} </td>
+                        </tr>
+                    </td>
+                    <td>{{p.Discount}}</td>
+                    <td>{{p.Paid}}</td>
+                    <td>{{p.Due}}</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <td colspan="3">Total </td>
+                    <td>{{total}}</td>
+                    <td>{{discount}}</td>
+                    <td>{{paidamount}}</td>
+                    <td>{{total-(discount+paidamount)}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <ng-template #other_content>
+        <div style="height: 40rem;">
+            <h3 style="margin: 50px;">No Data Found...</h3>
+        </div>
+    </ng-template>
+</div>

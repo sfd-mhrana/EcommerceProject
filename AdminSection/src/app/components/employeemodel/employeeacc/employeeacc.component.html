@@ -1,0 +1,123 @@
+<div class="purchasesMain">
+    <div class="formDesign"> 
+        <div class="form-hader">
+            <h4>Fill All field for Enter Amount of Employee</h4>
+        </div>
+        <div class="form">
+            <form autocomplete="off" action="">
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="employeename"
+                                    onkeyup="surching.serrchFormDropDown('employeename','employeelist')"
+                                    [formControl]="$any(form).controls['Employee_ID']" type="text" autocomplete="off"
+                                    value="{{employeename}}"
+                                    [readonly]="true">
+                                <label for="employeename">Employee Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="employeelist" class="dropdown-menu">
+                            <li *ngFor="let p of allemployee" (click)="setName(p.Employee_Name,p.Employee_ID)"
+                                id="male">
+                                <img src="{{imgurl}}/{{p.Employee_Image}}" alt="" width="30px" height="30px">
+                                <span>{{p.Employee_Name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="costtype" [formControl]="$any(form).controls['Type']" autocomplete="off"
+                                    type="text" value="{{costtype}}"
+                                    onkeyup="surching.serrchFormDropDown('costtype','costlist')" [readonly]="true">
+                                <label for="costtype">Cost Type</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="costlist" class="dropdown-menu">
+                            <li (click)="setCost('TA')" id="male">
+                                TA
+                            </li>
+                            <li (click)="setCost('TA / DA')" id="male">
+                                TA/DA
+                            </li>
+                            <li (click)="setCost('DA')" id="male">
+                                DA
+                            </li>
+                            <li (click)="setCost('Salary')" id="male">
+                                Salary
+                            </li>
+                            <li (click)="setCost('Bonus')" id="male">
+                                Bonus
+                            </li>
+                            <li (click)="setCost('Other')" id="male">
+                                Other
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="number" name="" [formControl]="$any(form).controls['Amount']" id="mobile"
+                        placeholder=" " />
+                    <label for="mobile">Enter Amount No</label>
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div> 
+    <div class="tableDesign"> 
+        <div class="form-hader search2">
+            <div class="surch-header">
+                <h3>All Account Transection</h3>
+            </div> 
+            <div class="surch-header">
+                <label for="to">Surch By name :</label>
+                <input type="text"
+                onkeyup="surching.searchFormTable('name','surchtable',1,'employeeacc')" name=""
+                id="name" placeholder=" " />
+            </div>
+        </div>
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Employee Name</td>
+                        <td>Date</td>
+                        <td>Type</td>
+                        <td>Amount</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of allemployeeAcc">
+                        <td>
+                             <img src="{{imgurl}}/{{p.employee.Employee_Image}}"
+                                style="width: 50px; height: 50px; margin: 0;">
+
+                        </td>
+                        <td>{{p.employee.Employee_Name}}</td>
+                        <td>{{p.Date}}</td>
+                        <td>{{p.Type}}</td>
+                        <td>{{p.Amount}}</td>
+                        <td>
+                            <i class="fa fa-edit"  (click)="setEditData(p)" ></i>
+                            <i class="fa fa-trash" (click)="deleteEmployee(p)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Amount: <b  id="totalTableResult" value="">{{TotalAmount}}</b></span>
+        </div>
+    </div>
+</div>

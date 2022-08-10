@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <title>Shop Managment</title>
+</head>
+
+<body>
+ 
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h1><span class="fa fa-user">UserIcon</span></h1>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="" class="active">
+                        <span class="fa fa-dashboard"></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-shopping-bag"></span>
+                        <span>Purchases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-shopping-cart"></span>
+                        <span>Sales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-users"></span>
+                        <span>Custommer</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-industry"></span>
+                        <span>Suppliyer</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-id-card"></span>
+                        <span>Employee</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-exchange"></span>
+                        <span>Stock</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="fa fa-money"></span>
+                        <span>Account</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="search-wrapper">
+                <span class="fa fa-search"></span>
+                <input type="search" placeholder="Search here">
+            </div>
+            <div class="user-wrapper">
+                <img src="../img/rana.jpg" alt="" width="30px" height="30px">
+                <div>
+                    <h4>MD HOSSEN RANA</h4>
+                    <small>Super Admin</small>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="cards">
+                <div class="card-items">
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-plus"></i><span>New Purchases</span> </button>
+                    </div>
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-credit-card"></i><span>&nbsp Purchases Due
+                                Paid</span> </button>
+                    </div>
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-money"></i> <span>&nbsp&nbspPurchases Account</span></button>
+                    </div>
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-product-hunt"></i> <span>&nbspPurchases
+                                Product</span></button>
+                    </div>
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-users"></i> <span>&nbsp&nbsp Product By
+                            &nbsp&nbsp&nbspCustommer</span></button>
+                    </div>
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-list"></i> <span> &nbspProduct By Bill
+                                No</span></button>
+                    </div>
+                    <div class="card-item">
+                        <button class="btn btn-info"><i class="fa fa-calendar"></i> <span> &nbsp Surch By Date</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="purchasesMain">
+                <div class="formDesign">
+                    <div class="form-hader">
+                        <h4>Fill All field for Enter new Suppliyer</h4>
+                    </div>
+                    <div class="form">
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" name="" id="suppliyername" placeholder=" " />
+                                <label for="suppliyername">Suppliyer Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="" id="companyname" placeholder=" " />
+                                <label for="companyname">Company Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" name="" id="mobile" placeholder=" " />
+                                <label for="mobile">Mobile No</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="" id="address" placeholder=" " />
+                                <label for="address">Address</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="file" name="" id="address" placeholder=" " />
+                                <label for="address">Choose Image</label>
+                            </div>
+                            <div class="imageselect">
+                                <img src="../img/rana.jpg" alt="">
+                            </div>
+                            <div class="btn-grp">
+                                <strong>Clear</strong>
+                                <strong>Submit</strong>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tableDesign">
+                    <div class="form-hader">
+                        <h4>All of Your Suppliyer</h4>
+                    </div>
+                    <div class="table-design">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Mobile</td>
+                                    <td>Address</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="../img/rana.jpg" style="width: 50px; height: 50px; margin: 0;">
+                                    </td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>Date</td>
+                                    <td>Custommer</td>
+                                    <td>Company</td>
+                                    <td>Address</td>
+                                    <td>
+                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-trash"></i>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btn-grp">
+                        <span>Total Suppliyer: <b>35</b></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+<script src="jsforpurchasesby.js"></script>
+</html>

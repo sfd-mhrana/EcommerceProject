@@ -1,0 +1,182 @@
+<div class="purchasesMain">
+    <div class="formDesign"> 
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Sales</h4>
+        </div>
+        <div class="form">
+            <form [formGroup]="form">
+                <div class="input-group">
+                    <div class="dropdown"> 
+                        <div class="select">
+                            <span>
+                                <input id="custommername" (change)="setNotParmanentCumto($event)"
+                                    onkeyup="surching.serrchFormDropDown('custommername','custommerlist')" type="text"
+                                    [formControl]="$any(form).controls['Company_Name']" autocomplete="off"
+                                    value="{{custommername}}" [readonly]="isReadOnly">
+                                <label for="custommername">Custommer Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="custommerlist" class="dropdown-menu">
+                            <li *ngFor="let p of allcustommer" (click)="setName(p)" id="male">
+                                <img src="{{custommerImage}}/{{p.Custommer_Image}}" alt="" width="30px" height="30px">
+                                <span>{{p.Company_Name}}/{{p.Address}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" [formControl]="$any(form).controls['Invoice_No']" id="invoiceno" autocomplete="off"
+                        placeholder=" " [readonly]="isReadOnly" />
+                    <label for="invoiceno">Invoice No</label>
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="categoryname"
+                                    onkeyup="surching.serrchFormDropDown('categoryname','categoryList')" type="text"
+                                    [formControl]="$any(form).controls['Category_Id']" autocomplete="off"
+                                    value="{{categoryname}}">
+                                <label for="categoryname">Category Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="categoryList" class="dropdown-menu">
+                            <li *ngFor="let p of allCategory" (click)="setCategory(p)" id="male">
+                                <span>{{p.Name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="productname"
+                                    onkeyup="surching.serrchFormDropDown('productname','productlist')" type="text"
+                                    [formControl]="$any(form).controls['Product_Id']" autocomplete="off"
+                                    value="{{productname}}">
+                                <label for="productname">Product Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="productlist" class="dropdown-menu">
+                            <li *ngFor="let p of allProduct" (click)="setProductname(p)" id="male">
+                                <img src="{{productimage}}/{{p.Producut_Images}}" alt="" width="30px" height="30px">
+                                <span>{{p.Product_Name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="grnumber" onkeyup="surching.serrchFormDropDown('grnumber','grnumberlist')"
+                                    type="text" [formControl]="$any(form).controls['GRN_NO']" autocomplete="off"
+                                    value="{{grnumber}}">
+                                <label for="grnumber">Select GRN</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="grnumberlist" class="dropdown-menu">
+                            <li *ngFor="let p of allGRNumber" (click)="setGrn(p)" id="male">
+                                <span>{{p.id}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" (change)="countTotalp($event)" autocomplete="off"
+                        [formControl]="$any(form).controls['Producut_Price']" id="price" placeholder=" " />
+                    <label for="price">Product Price</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" (change)="countTotal($event)" autocomplete="off"
+                        [formControl]="$any(form).controls['Quantaty']" id="quantaty" placeholder=" " />
+                    <label for="quantaty">Product Quantaty</label>
+                </div>
+                <div class="input-group">
+                    <label for="total" class="plabel">Total Price</label>
+                    <p type="text" name="total" id="total" value="" placeholder="Total Amount">{{totalprice}}</p>
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="SRName" onkeyup="surching.serrchFormDropDown('SRName','srlist')" type="text"
+                                    [formControl]="$any(form).controls['SR_ID']" autocomplete="off" value="{{SRName}}"
+                                    [readonly]="isReadOnly">
+                                <label for="SRName">SR Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="srlist" class="dropdown-menu">
+                            <li *ngFor="let p of allSRArray" (click)="setSrname(p)" id="male">
+                                <img src="{{employeeimage}}/{{p.Employee_Image}}" alt="" width="30px" height="30px">
+                                <span>{{p.Employee_Name}}</span>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="invoicetable" *ngIf="allInvoiceItem!=null;else other_content">
+        <div class="form-hader">
+            <h4>All Product on <b>bill</b> from this <b>Custommer</b></h4>
+            <span>23/24/2021 Bill Date</span>
+        </div>
+        <div class="table-design">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Category</td>
+                        <td>Product</td>
+                        <td>Quantaty</td>
+                        <td>Price</td>
+                        <td>Total</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of allInvoiceItem">
+                        <td>
+                            <img height="50px" width="80px" src="{{productimage}}/{{p.product.Producut_Images}}"
+                                alt="asdf">
+                        </td>
+                        <td>{{p.category.Name}}</td>
+                        <td>{{p.product.Product_Name}}</td>
+                        <td>{{p.Quantaty}}</td>
+                        <td>{{p.Sales_Price}}</td>
+                        <td>{{p.Total_Price}}</td>
+                        <td>
+                            <i class="fa fa-edit"  (click)="setEditData(p)"></i>
+                            <i class="fa fa-trash" (click)="deletePFormInvoice(p)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp invoicecas">
+            <span>Total Amount: <b>{{allInvoiceTotal}}</b></span>
+            <span>Discount : <input type="number"  (change)="discount($event)" style="width: 100px; height: 30px;"></span>
+            <span>Paid : <input type="number"  (change)="paidAmout($event)" style="width: 100px; height: 30px;"></span>
+        </div>
+        <div class="btn-grp invoicecas">
+            <span>Due Amount: <b>{{dueAmount}}</b></span>
+            <span  *ngIf="totoalInvoiceItem!=0" (click)="submitInvoice()" class="btnsp">Submit Invoice</span>
+        </div>
+    </div>
+
+    <ng-template #other_content>
+        <h3 style="margin-top: 50px;">Please, Enter One Product for Enable Invoice....</h3>
+    </ng-template>
+</div>

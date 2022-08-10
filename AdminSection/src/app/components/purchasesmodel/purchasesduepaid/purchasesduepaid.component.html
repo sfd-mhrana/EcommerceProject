@@ -1,0 +1,138 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Paid Amount</h4>
+        </div>
+        <div class="form">
+            <form [formGroup]="form">
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="suppliyername" autocomplete="off"
+                                    onkeyup="surching.serrchFormDropDown('suppliyername','suppliyerlist')" type="text"
+                                    value="{{suppliyername}}" [readonly]="isReadOnly">
+                                <label for="suppliyername">Suppliyer Name</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="suppliyerlist" class="dropdown-menu">
+                            <li *ngFor="let p of allSuppliyer" (click)="setInvioceItem(p)"
+                                [formControl]="$any(form).controls['Company_Name']" id="male">
+                                <img src="{{suppliyeriamge}}/{{p.Suppliyer_Image}}" alt="" width="30px" height="30px">
+                                <span>{{p.Company_Name}}/{{p.Address}}</span>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <div class="select">
+                            <span>
+                                <input id="invoiceno" onkeyup="surching.serrchFormDropDown('invoiceno','invoicelist')"
+                                    [formControl]="$any(form).controls['Invoice_No']" type="text" autocomplete="off"
+                                    value="{{invoiceno}}">
+                                <label for="invoiceno">Select Invoice</label>
+                            </span>
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <ul id="invoicelist" class="dropdown-menu">
+
+                            <li *ngFor="let p of allInvoiceAcc" (click)="setInvoice(p)" id="male">
+                                <span>{{p.Invoice_No}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group" *ngIf="!updateD">
+                    <input type="text" name="" value="{{totalDue}}" [readonly]="true" id="totalamount" placeholder="" />
+                    <label for="totalamount">Total Due Amount</label>
+                </div>
+                <div class="input-group" *ngIf="updateD">
+                    <input type="text" name="" value="{{editLastDue}}" autocomplete="off" [readonly]="true" id="totalamount"
+                        placeholder="" />
+                    <label for="totalamount">Total Due Amount</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="discount" (change)="discount($event)"
+                        [formControl]="$any(form).controls['Discount']" autocomplete="off" [readonly]="ifallPaid" placeholder=" " />
+                    <label for="discount">Product Discount</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" (change)="paidAmout($event)" [readonly]="ifallPaid"
+                        [formControl]="$any(form).controls['Paid']" autocomplete="off" id="paid" placeholder=" " />
+                    <label for="paid">Product Paid</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="" id="lastdue" placeholder=" " value="{{lastDue}}" [readonly]="true" />
+                    <label for="lastdue">Product Last Due</label>
+                </div>
+                <div class="input-group" *ngIf="!updateD">
+                    <input type="text" name="" (change)="setCost($event)" [readonly]="ifallPaid" autocomplete="off"
+                        [formControl]="$any(form).controls['Cost']" id="paid" placeholder=" " />
+                    <label for="paid">Any Cost</label>
+                </div>
+
+                <div class="btn-grp">
+                    <strong>Clear</strong>
+                    <strong (click)="submitDuepaid()" *ngIf="!updateD">Submit</strong>
+                    <strong (click)="upDateDuePaid()" *ngIf="updateD"> Update</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign" *ngIf="tableItem!=null;else other_content">
+        <div *ngIf="tableItem.length>0;else othercom">
+            <div class="form-hader">
+                <h4 *ngIf="!singleinvoiceshow">All Account Details of <b>" {{suppliyername}} "</b></h4>
+                <h4 *ngIf="singleinvoiceshow">All Account Details on <b>" {{invoiceno}} "</b> from this <b>"
+                        {{suppliyername}} "</b></h4>
+            </div>
+            <div class="table-design">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <td>Invoiec</td>
+                            <td>Date</td>
+                            <td>Total Item</td>
+                            <td>Total Amount</td>
+                            <td>Discount</td>
+                            <td>Paid</td>
+                            <td>Due</td>
+                            <td *ngIf="singleinvoiceshow">Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of tableItem">
+                            <td>{{p.Invoice_No}}</td>
+                            <td>{{p.Purchase_Date}}</td>
+                            <td>{{p.Total_Item}}</td>
+                            <td>{{p.Total_Amount}}</td>
+                            <td>{{p.Discount}}</td>
+                            <td>{{p.Paid}}</td>
+                            <td *ngIf="!singleinvoiceshow">{{p.Total_Amount-p.Discount-p.Paid}}</td>
+                            <td *ngIf="singleinvoiceshow">{{p.STotal_Amount-p.SDiscount-p.SPaid}}</td>
+                            <td *ngIf="singleinvoiceshow && p.Total_Amount==0">
+                                <i class="fa fa-edit" (click)="setEditData(p)"></i>
+                                <i class="fa fa-trash" (click)="deletePurAcc(p)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-grp cash">
+                <span *ngIf="!singleinvoiceshow">Total Bill: <b>{{totalInvoice}}</b></span>
+                <span *ngIf="singleinvoiceshow">Total Date: <b>{{totalInvoice}}</b></span>
+                <span>Total Amount: <b>{{totalAmount}}</b></span>
+                <span>Total Due: <b>{{totalDue}}</b></span>
+            </div>
+        </div>
+        <ng-template #othercom>
+            <h3 style="margin: 50px;">No Data Found</h3>
+        </ng-template>
+    </div>
+
+    <ng-template #other_content>
+        <h3 style="margin-top: 50px;">Please, Select Cumpany Name See Details.</h3>
+    </ng-template>
+</div>

@@ -1,0 +1,72 @@
+<div class="purchasesMain">
+    <div class="formDesign">
+        <div class="form-hader">
+            <h4>Fill All field for Enter new Product</h4>
+        </div>  
+        <div class="form"> 
+            <form  [formGroup]="form" >
+                <div class="input-group">
+                    <input type="text" name="" [formControl]="$any(form).controls['bank_name']" id="bankid" placeholder=" " />
+                    <label for="bankid">Bank Name</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="number" name="" [formControl]="$any(form).controls['account_number']" id="bankname" placeholder=" " />
+                    <label for="bankname">Account Number</label>
+                </div>
+
+                <div class="input-group">
+                    <select name="" [formControl]="$any(form).controls['bank_type']" id="position">
+                        <option value="Public">Public Banking</option>
+                        <option value="Mobile">Mobile Banking</option>
+                    </select>
+                    <label for="position">Select Bank Type</label>
+                </div>
+
+                <div class="btn-grp">
+                    <strong (click)="clearForm()">Clear</strong>
+                    <strong (click)="update()" *ngIf="updateD">Update</strong>
+                    <strong (click)="onSubmit()" *ngIf="!updateD">Submit</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tableDesign">
+        <div class="form-hader search1">
+            <div class="surch-header">
+                <label for="name">Surch By Name From All Product List :</label>
+                <input type="text" onkeyup="surching.searchFormTable('name','surchtable',1,'bank')" name="" id="name"
+                    placeholder=" " />
+            </div> 
+        </div>
+
+        <div class="table-design">
+            <table id="surchtable" class="styled-table">
+                <thead>
+                    <tr>
+                        <td>Bank Type</td>
+                        <td>Bank Name</td>
+                        <td>Account Number</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of allbank">
+                        <td>{{p.bank_type}}</td>                        
+                        <td>{{p.bank_name}}</td>
+                        <td>{{p.account_number}}</td>
+
+                        <td>
+                            <i class="fa fa-edit"   (click)="setEditData(p)" ></i>
+                            <i class="fa fa-trash" (click)="deleteproduct(p)"></i>
+                        </td>
+                    </tr>
+                        
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-grp">
+            <span>Total Product: <b>{{totalbank}}</b></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="main-tableDesign">
+    <div class="form-hader search2">
+        <div class="surch-header">
+            <label for="name">Surch By Product Name :</label>
+            <input type="text" onkeyup="surching.searchStockTable('pname','surchtable',2)" name="" id="pname"
+                placeholder=" " />
+        </div> 
+
+        <div class="surch-header">
+            <label for="name">Surch Less Quantaty For show Short List :</label>
+            <input type="text" onkeyup="surching.searchStockTable('quantaty','surchtable',5)" name="" id="quantaty"
+                placeholder=" " />
+        </div>
+    </div>
+
+    <div class="table-design"  *ngIf="allStock!=null && allStock.length>0;else other_content">
+        <table id="surchtable" class="styled-table">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Category Name</td>
+                    <td>Product Name</td>
+                    <td>Purchases Quantaty</td>
+                    <td>Sales Quantaty</td>
+                    <td>Stock Quantaty</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of allStock">
+                    <td>
+                        <img src="{{imgurl}}/{{p.Producut_Images}}" style="width: 50px; height: 50px; margin: 0;">
+                    </td>
+                    <td>{{p.Name}}</td>
+                    <td>{{p.Product_Name}}</td>
+                    <td>{{p.pQuantaty}}</td>
+                    <td>{{p.sQuantaty}}</td>
+                    <td>{{p.Quantaty}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <ng-template #other_content>
+        <h3 style="margin: 50px; margin-bottom: 100px;">No Record Found.</h3>
+    </ng-template>
+
+</div>  

@@ -1,0 +1,62 @@
+<div class="scroll-main-tableDesign">
+    <div class="form-hader search2">
+        <div class="surch-header">
+            <label for="from">From :</label>
+            <input type="date"
+            #from (change)="fromProduct(from.value)"
+            name="" id="from" placeholder=" " />
+        </div>
+        <div class="surch-header">
+            <label for="to">To :</label>
+            <input type="date"
+            #to (change)="toProduct(to.value)"
+            name="" id="to" placeholder=" " />
+        </div>
+
+    </div>
+    <div class="table-design">
+        <table class="styled-table">
+            <thead> 
+                <tr>
+                    <td>Date</td>
+                    <td>Only Sales</td>
+                    <td>Only Purchases</td>
+                    <td>Sales Cash</td>
+                    <td>Purchases Cash</td>
+                    <td>Sales Return</td>
+                    <td>Purchases Return</td>
+                    <td>Cash Credit</td>
+                    <td>Cash Devit</td>
+                    <td>Costing</td>
+                </tr>
+            </thead> 
+            <tbody>
+                <tr *ngFor="let p of alltableItem">
+                    <td> {{p.Date}}</td>
+                    <td> {{p.Sales_Total}}</td>
+                    <td> {{p.Purchases_Total}}</td>
+                    <td> {{p.Sales_Paid}}</td>
+                    <td> {{p.Purchases_Paid}}</td>
+                    <td> {{-(p.Sales_Paid_R)}}</td>
+                    <td> {{-(p.Purchases_Paid_R)}}</td>
+                    <td> {{p.Credit}}</td>
+                    <td> {{p.Devit}}</td>
+                    <td> {{p.Cost_Amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    <div class="btn-grp invoicecas">
+        <span>Sales: <b>{{sales}}</b></span>
+        <span>Purchases: <b>{{Purchases}}</b></span>
+        <span>Sales Paid: <b>{{SalesPaid}}</b></span>
+        <span>Purchases Paid: <b>{{PurchasesPaid}}</b></span>
+        <span>Sales Return : <b>{{-salesReturn}}</b></span>
+    </div>
+    <div class="btn-grp invoicecas">
+        <span>Purchases Return : <b>{{-purchasesReturn}}</b></span>
+        <span>All Credit : <b>{{Credit}}</b></span>
+        <span>All Devit : <b>{{Devit}}</b></span>
+        <span>Cost : <b>{{cost}}</b></span>
+    </div>
+</div>
