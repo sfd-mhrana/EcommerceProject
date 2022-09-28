@@ -161,7 +161,7 @@ export class BankdetailsComponent implements OnInit {
 
     })
   }
-
+ 
   setEditData(value: any) {
     this.updateid = value.id;
     this.updateD = true;

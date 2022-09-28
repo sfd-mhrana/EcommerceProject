@@ -104,7 +104,7 @@ export class ProductComponent implements OnInit {
     if (this.files != null) {
       fromdata.append('Producut_Images', this.files);
     }
-
+ 
     this.products.updateProduct(fromdata).subscribe((result) => {
       this.adddata = true;
       this.userdata = "Product Updated"
@@ -151,7 +151,6 @@ export class ProductComponent implements OnInit {
       reader.onload = e => this.imageSrc = reader.result;
       reader.readAsDataURL(this.files);
     }
-
   }
 
   clearForm() {

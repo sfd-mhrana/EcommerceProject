@@ -27,7 +27,7 @@ export class SidenavbarComponent implements OnInit {
         }
       }
   }
-
+ 
   ngOnInit(): void {
     this.refreshactive.subscribe(()=>{
       this.activeClass;

@@ -20,7 +20,7 @@ export class AccountsserService {
   
   constructor(private http: HttpClient,private cookeiset:CookieService) {
   } 
-
+ 
   addCash(value:any){
     const httpOptions = {
       headers: new HttpHeaders({ 

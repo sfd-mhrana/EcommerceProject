@@ -32,7 +32,7 @@ export class AccountcostComponent implements OnInit {
       this.allCostingDetails; this.alltableItem;this.totalCost=0;
     })
   }
-
+ 
   getAllCosting() {
     var formdata = new FormData();
     formdata.append('User_ID', this.username);

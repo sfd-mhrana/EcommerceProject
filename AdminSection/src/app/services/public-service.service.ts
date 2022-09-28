@@ -87,7 +87,6 @@ export class PublicServiceService {
   }
 
   getUser():Observable<any>{
-    
     return this.http.get(this.url + 'user', {
       headers:new HttpHeaders()
       .set('Authorization',  `Bearer ${this.cookeiset.get('Token')}`)

@@ -21,7 +21,7 @@ import { DeshboardmodelModule } from './components/deshboardmodel/deshboardmodel
 import {SimpleNotificationsModule} from 'angular2-notifications'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LogincomponentsComponent } from './logincomponents/logincomponents.component';
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService } from 'ngx-cookie-service';
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
